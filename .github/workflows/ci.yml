@@ -46,3 +46,22 @@ jobs:
         run: |
           python3 -m pytest -v
 
+            # JOB 2: Docker image building
+  build:
+    runs-on: ubuntu-latest
+
+    # Run only after successful tests
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t ecommerce-api:${{ github.sha }} .
+
+      - name: Verify Docker image
+        run: |
+          docker images
+          docker image inspect ecommerce-api:${{ github.sha }}
