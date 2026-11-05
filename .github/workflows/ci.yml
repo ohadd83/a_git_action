@@ -69,5 +69,8 @@ jobs:
       - name: run docker container
         run:
           docker run -d --name ecom-api -p 8000:8000 ecommerce-api:${{ github.sha }}
-          
+      - name: Wait for application to start 
+        run: sleep 3
+      - name: test app health
+        run: curl -f http://localhost:8000/health  
 
