@@ -78,5 +78,6 @@ jobs:
              echo "test get products" 
              curl -f http://localhost:8000/products/1
              echo "test new order"
-             curl -f  -X POST  -H "Content-Type: application/json" \
+             curl -f  -X POST   \ 
+             -H "Content-Type: application/json" \
              -d '{"product_id":1,"quantity":3}' http://localhost:8000/orders/
