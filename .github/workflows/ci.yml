@@ -72,6 +72,11 @@ jobs:
       - name: Wait for application to start 
         run: sleep 3
       - name: test app health
-        run: curl -f http://localhost:8000/health  
+        run: 
+             echo "run health check "
+             curl -f http://localhost:8000/health 
+             echo "test get products" 
              curl -f http://localhost:8000/products/1
-             curl -f  -X POST  -H "Content-Type: application/json" -d '{"product_id":1,"quantity":3}' http://localhost:8000/orders/
+             echo "test new order"
+             curl -f  -X POST  -H "Content-Type: application/json" \
+             -d '{"product_id":1,"quantity":3}' http://localhost:8000/orders/
