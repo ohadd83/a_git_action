@@ -74,3 +74,4 @@ jobs:
       - name: test app health
         run: curl -f http://localhost:8000/health  
              curl -f http://localhost:8000/products/1
+             curl -f  -X POST  -H "Content-Type: application/json" -d '{"product_id":1,"quantity":3}' http://localhost:8000/orders/
