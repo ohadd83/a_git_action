@@ -65,3 +65,9 @@ jobs:
         run: |
           docker images
           docker image inspect ecommerce-api:${{ github.sha }}
+
+      - name: run docker container
+        run:
+          docker run -d --name ecom-api:${{ github.sha }} -p 8000:8000 ecommerce-api:${{ github.sha }}
+          
+
